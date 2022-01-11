@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "uniqid": "^5.4.0",
+    "yargs": "^17.3.1"
+  }
+}
