@@ -30,14 +30,10 @@ const createUser = (name, email) => {
   const users = loadUsers();
   // const duplicatedNames = duplicates(users, name);
   // const duplicatedEmails = duplicates(users, email);
-  const duplicatedNames = users.filter((user) => {
-    return user.name === name;
-  });
-  const duplicatedEmails = users.filter((user) => {
-    return user.email === email;
-  });
+  const duplicatedNames = users.find((user) => user.name === name);
+  const duplicatedEmails = users.find((user) => user.email === email);
 
-  if (duplicatedNames.length === 0 && duplicatedEmails.length === 0) {
+  if (!duplicatedNames && !duplicatedEmails) {
     users.push({
       id: uniqid(),
       name: name,
@@ -45,14 +41,14 @@ const createUser = (name, email) => {
     });
     saveUsers(users);
     console.log(chalk.green.inverse("New user has been added!"));
-  } else if (duplicatedNames.length !== 0 && duplicatedEmails.length !== 0) {
+  } else if (duplicatedNames && duplicatedEmails) {
     console.log(
       chalk.red.inverse(
         `Both name: ${name} and email: ${email} are already taken...`
       )
     );
     return;
-  } else if (duplicatedNames.length !== 0) {
+  } else if (duplicatedNames) {
     console.log(chalk.red.inverse(`Name: ${name} is already taken...`));
     return;
   } else {
@@ -63,16 +59,14 @@ const createUser = (name, email) => {
 
 const readUser = (id) => {
   const users = loadUsers();
-  const foundUser = users.filter((user) => {
-    return user.id === id;
-  });
-  if (foundUser.length === 0) {
+  const foundUser = users.find((user) => user.id === id);
+  if (!foundUser) {
     console.log(chalk.red.inverse(`No such user with id: ${id}`));
     return;
   }
   console.log(
     chalk.blue.inverse(
-      `id: ${id}, name: ${foundUser[0].name}, email: ${foundUser[0].email}`
+      `id: ${id}, name: ${foundUser.name}, email: ${foundUser.email}`
     )
   );
 };
@@ -128,7 +122,7 @@ const updateUser = (id, name, email) => {
     users[userIndex].email = email;
     saveUsers(users);
     console.log(
-      chalk.green.inverse(`User ${id} updated name: ${name}, updted email: ${email}`)
+      chalk.green.inverse(`User ${id} updated name: ${name}, updated email: ${email}`)
     );
   }
 };
