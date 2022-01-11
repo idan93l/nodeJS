@@ -73,9 +73,7 @@ const readUser = (id) => {
 
 const deleteUser = (id) => {
   const users = loadUsers();
-  const reducedUsers = users.filter((user) => {
-    return user.id !== id;
-  });
+  const reducedUsers = users.filter((user) => user.id !== id);
   if (users.length === reducedUsers.length) {
     console.log(chalk.red.inverse(`No such user with id: ${id}`));
     return;
@@ -100,9 +98,7 @@ const deleteUser = (id) => {
 
 const updateUser = (id, name, email) => {
   const users = loadUsers();
-  const userIndex = users.findIndex((user) => {
-    return user.id === id;
-  });
+  const userIndex = users.findIndex((user) => user.id === id);
   if (userIndex < 0) {
     console.log(chalk.red.inverse(`No such user with id: ${id}`));
     return;
