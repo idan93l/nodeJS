@@ -8,12 +8,22 @@ app.get("/numbers", (req, res) => res.status(200).send(arr));
 
 app.post("/numbers/:num", (req, res) => {
   const { num } = req.params;
+  const duplicatedNum = arr.find(number => number === +num);
+  if (duplicatedNum) {
+    res.status(400).send(`${num} already exists`);
+    return;
+  }
   arr.push(+num);
   res.status(201).send(arr);
 });
 
 app.delete("/numbers/:num", (req, res) => {
   const { num } = req.params;
+  const duplicatedNum = arr.find(number => number === +num);
+  if (!duplicatedNum) {
+    res.status(400).send(`${num} doesn't exists`);
+    return;
+  }
   const index = arr.findIndex(number => number === +num);
   arr.splice(index, 1);
   res.status(202).send(arr)
@@ -21,6 +31,11 @@ app.delete("/numbers/:num", (req, res) => {
 
 app.put("/numbers/:num", (req, res) => {
   const { num } = req.params;
+  const duplicatedNum = arr.find(number => number === +num);
+  if (!duplicatedNum) {
+    res.status(400).send(`${num} doesn't exists`);
+    return;
+  }
   const { newNum } = req.query;
   const index = arr.findIndex(number => number === +num);
   arr[index] = +newNum;
