@@ -1,5 +1,4 @@
 const express = require("express");
-// app.use(express.json());
 const app = express();
 const port = 4000;
 const arr = [1,2,3,4,5,6];
