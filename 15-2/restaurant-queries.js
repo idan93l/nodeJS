@@ -1,0 +1,21 @@
+// 1.1 - db.restaurants.find( )
+// 1.2 - db.restaurants.find( { "type":"Bar" } )
+// 1.3 - db.restaurants.find( { "kosher":true } )
+// 1.4 - db.restaurants.find( { "address.city":"Rehovot" } )
+// 1.5 - db.restaurants.find( { "address.street":"Hertzl" } )
+// 1.6 - db.restaurants.find( { "address.coordinates":[ -77, 564, 40.677 ] } )
+// 1.7 - db.restaurants.find().sort({"name":1})
+// 1.8 - db.restaurants.find().sort({"address.city":1})
+// 1.9 - db.restaurants.updateOne({name:"Luna"},{$set:{name:"Lunarrrr"}})
+// 1.10 -db.restaurants.updateOne({name:"Luna"},{$push:{reviews:{date:"25-12-21",score:7}}})
+// 1.11 - db.restaurants.updateMany({},{$set:{kosher:true}})
+// 1.12 - db.restaurants.deleteOne({"name":"Luna"})
+// 1.13 - db.restaurants.deleteMany({ })
+// 2.1 - db.restaurants.find().forEach(function(names) {print("name: " + names.name);})
+// 2.2 - db.restaurants.find().forEach(function(cities) {print("city: " + cities.address.city);})
+// 2.3 - db.restaurants.find().forEach(function(item) {print("coordinates: " + item.address.coordinates);})
+// 3.1 - findMyRestuarents> db.restaurants.find({name:{$regex:/^L/i}})
+// 3.2 - db.restaurants.countDocuments()
+// 3.3 - 
+// 4.1 - 
+// 4.2 - 
