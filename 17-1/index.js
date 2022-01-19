@@ -1,30 +1,31 @@
 const mongoose = require("mongoose");
+// const { db } = require("./Product.js");
 const Product = require("./Product.js");
-
-mongoose.connect()
 
 mongoose.connect(
   "mongodb://127.0.0.1:27017/e-commerce-site",
   // { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => {
     console.log("connected");
+    // db.stop();
   },
   (e) => console.error(e)
 );
 
+run();
 
 async function run() {
   try {
     const product = await Product.create({
-      name: "musicman stingray",
-      category: "bass",
+      name: "taylor baby jr",
+      category: "acoustic",
       isActive: true,
       details: {
-        description: "musicman classic",
-        price: 9500,
-        discount: 10,
-        images: ["image1", "image2"],
-        phone: "0582985326",
+        description: "the best acoustic guitar for your next travel",
+        price: 3000,
+        discount: 15,
+        images: ["image5", "image6"],
+        phone: "0508395719",
       },
     });
     console.log(product);
@@ -32,5 +33,3 @@ async function run() {
     console.log(e.message);
   }
 }
-
-run();
