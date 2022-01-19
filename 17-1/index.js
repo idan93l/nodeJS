@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const Product = require("./Product.js");
 
+mongoose.connect()
+
 mongoose.connect(
-  "mongodb://localhost/e-commerce-site",
+  "mongodb://127.0.0.1:27017/e-commerce-site",
   // { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => {
     console.log("connected");
@@ -31,4 +33,4 @@ async function run() {
   }
 }
 
-run()
+run();
